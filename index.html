@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>盛世天下 · 女帝篇</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ========== 標題 ========== -->
+  <section class="screen" id="screen-title">
+    <div class="title-frame">
+      <h1 class="game-title">盛世天下</h1>
+      <div class="game-sub">女 帝 篇</div>
+      <p class="game-tagline">執掌乾坤 · 天下為棋 · 巾幗臨朝</p>
+      <div class="title-menu">
+        <button class="menu-btn primary" id="btn-new">開始新朝</button>
+        <button class="menu-btn" id="btn-continue" style="display:none">繼續執政<span class="sub"></span></button>
+        <button class="menu-btn" id="btn-gallery">結局圖鑑 <span id="title-endings-count">0 / 0</span></button>
+      </div>
+    </div>
+    <p id="title-tip"></p>
+  </section>
+
+  <!-- ========== 年號選擇 ========== -->
+  <section class="screen" id="screen-era">
+    <div class="era-head">定 年 號</div>
+    <p class="era-desc">先帝驟崩,遺詔傳位皇長女。<br>登基在即,禮部呈上年號候選——這兩個字,將冠於你的時代之前。</p>
+    <div id="era-options"></div>
+    <button class="back-link" id="btn-era-back">← 返回</button>
+  </section>
+
+  <!-- ========== 遊戲主畫面 ========== -->
+  <section class="screen" id="screen-game">
+    <div id="topbar">
+      <div class="topbar-left">
+        <span id="hud-era">—</span>
+        <span id="hud-season">—</span>
+        <span id="hud-title">—</span>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn" id="btn-ministers" title="朝臣">👥</button>
+        <button class="icon-btn" id="btn-log" title="史冊">📖</button>
+        <button class="icon-btn" id="btn-sound" title="音效">🔊</button>
+        <button class="icon-btn" id="btn-home" title="回到標題(自動存檔)">🏠</button>
+      </div>
+    </div>
+    <div id="stat-bar"></div>
+    <div id="stage"></div>
+  </section>
+
+  <!-- ========== 結局 ========== -->
+  <section class="screen" id="screen-ending">
+    <div class="ending-box">
+      <span id="ending-icon">🏯</span>
+      <div id="ending-type">終局</div>
+      <h2 id="ending-title">—</h2>
+      <div id="ending-years">—</div>
+      <div id="ending-stats"></div>
+      <p id="ending-text"></p>
+      <button class="menu-btn primary" id="btn-ending-new">再開新朝</button>
+      <button class="menu-btn" id="btn-ending-back">回到標題</button>
+    </div>
+  </section>
+
+  <!-- ========== 結局圖鑑 ========== -->
+  <section class="screen" id="screen-gallery">
+    <h2 class="gallery-head">結 局 圖 鑑</h2>
+    <div id="gallery-list"></div>
+    <button class="back-link" id="btn-gallery-back">← 返回</button>
+  </section>
+
+  <!-- ========== 大臣面板 ========== -->
+  <div class="panel" id="panel-ministers">
+    <div class="panel-box">
+      <div class="panel-head"><h3>朝 臣</h3><button class="panel-close" id="btn-ministers-close">✕</button></div>
+      <div class="panel-body" id="minister-list"></div>
+    </div>
+  </div>
+
+  <!-- ========== 日誌面板 ========== -->
+  <div class="panel" id="panel-log">
+    <div class="panel-box">
+      <div class="panel-head"><h3>起 居 注</h3><button class="panel-close" id="btn-log-close">✕</button></div>
+      <div class="panel-body" id="log-list"></div>
+    </div>
+  </div>
+
+</div>
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
