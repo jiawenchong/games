@@ -44,3 +44,7 @@ js/data.js      事件卡、劇情連鎖、結局等資料
 js/game.js      遊戲引擎(回合流程、存檔、結算)
 js/audio.js     WebAudio 合成音效
 ```
+
+## 其他專案
+
+- [`airflow-sim/`](airflow-sim/) — 🌬️ 開源風洞:瀏覽器裡的即時 2D 氣流模擬(Lattice Boltzmann),同樣純前端零依賴。

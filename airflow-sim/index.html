@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>開源風洞 · 瀏覽器氣流模擬</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌬️</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <h1>🌬️ 開源風洞</h1>
+    <p class="sub">Lattice Boltzmann (D2Q9) 即時氣流模擬 · 純前端 · 零依賴 · 免費開源</p>
+  </header>
+
+  <div id="canvas-wrap">
+    <canvas id="view"></canvas>
+    <div id="toast"></div>
+    <div id="readout">
+      <span>FPS <b id="fps">—</b></span>
+      <span>雷諾數 Re ≈ <b id="re">—</b></span>
+    </div>
+  </div>
+
+  <p class="hint">💡 在畫面上按住拖曳即可繪製障礙物,觀察氣流如何繞過它。試試「圓柱」預設,把黏滯度調低,就能看到卡門渦街!</p>
+
+  <div id="controls">
+
+    <fieldset>
+      <legend>流場</legend>
+      <label>風速 <output id="speed-val">0.080</output>
+        <input type="range" id="speed" min="0.02" max="0.12" step="0.005" value="0.08">
+      </label>
+      <label>黏滯度 <output id="visc-val">0.020</output>
+        <input type="range" id="visc" min="0.005" max="0.2" step="0.005" value="0.02">
+      </label>
+      <label>每幀步數 <output id="steps-val">8</output>
+        <input type="range" id="steps" min="1" max="20" step="1" value="8">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>顯示</legend>
+      <label>模式
+        <select id="mode">
+          <option value="curl" selected>渦度(旋轉強度)</option>
+          <option value="speed">流速</option>
+          <option value="density">密度(≈壓力)</option>
+        </select>
+      </label>
+      <label>對比 <output id="contrast-val">1.0</output>
+        <input type="range" id="contrast" min="0.3" max="4" step="0.1" value="1">
+      </label>
+      <label class="row"><input type="checkbox" id="tracers" checked> 煙流粒子</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>障礙物</legend>
+      <label>預設形狀
+        <select id="preset">
+          <option value="cylinder" selected>圓柱(卡門渦街)</option>
+          <option value="plate">垂直平板</option>
+          <option value="wing">機翼</option>
+          <option value="buildings">建築縫隙風</option>
+          <option value="empty">清空</option>
+        </select>
+      </label>
+      <div class="row btns">
+        <button id="tool-draw" class="tool">✏️ 繪製</button>
+        <button id="tool-erase" class="tool">🧽 擦除</button>
+      </div>
+      <label>筆刷大小 <output id="brush-val">4</output>
+        <input type="range" id="brush" min="1" max="12" step="1" value="4">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>模擬</legend>
+      <label>解析度
+        <select id="res">
+          <option value="low">低(160×64,省電)</option>
+          <option value="mid" selected>中(240×96)</option>
+          <option value="high">高(320×128,較吃 CPU)</option>
+        </select>
+      </label>
+      <div class="row btns">
+        <button id="btn-pause">⏸ 暫停</button>
+        <button id="btn-reset">🔄 重置流場</button>
+        <button id="btn-clear">🗑 清空障礙</button>
+      </div>
+    </fieldset>
+
+  </div>
+
+  <footer>
+    <details>
+      <summary>這是怎麼算的?</summary>
+      <p>本模擬使用 <b>Lattice Boltzmann 方法(LBM,D2Q9)</b>:把空間切成格子,每格追蹤九個方向的粒子分布,
+      每一步做「碰撞(向局部平衡鬆弛)」與「平流(往鄰格移動)」,巨觀上便重現了 Navier–Stokes 流體行為。
+      障礙物採半程反彈(bounce-back)無滑移邊界;左緣固定進流、右緣零梯度出流。
+      一切都在你的瀏覽器裡即時計算 — 不需要伺服器、GPU 或任何授權。</p>
+      <p>注意:這是 2D、低馬赫數的教學/概念級模擬,適合直覺理解與快速實驗;
+      若要做工程級 3D 分析,可搭配開源的 OpenFOAM 或 SU2。</p>
+    </details>
+  </footer>
+
+</div>
+<script src="js/sim.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
