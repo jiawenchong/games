@@ -142,6 +142,132 @@ button.tool.active {
   background: rgba(79, 195, 247, .1);
 }
 
+.hint a { color: var(--accent); }
+
+/* ============ 理論小教室 ============ */
+#course { margin-top: 34px; }
+#course h2 {
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+}
+.course-sub {
+  color: var(--dim);
+  font-size: .82rem;
+  margin: 8px 0 16px 13px;
+}
+.course-sub b { color: var(--text); }
+
+details.lesson {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: .88rem;
+}
+details.lesson > summary {
+  list-style: none;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .95rem;
+}
+details.lesson > summary::-webkit-details-marker { display: none; }
+details.lesson > summary::after {
+  content: '＋';
+  margin-left: auto;
+  color: var(--dim);
+  font-size: .95rem;
+}
+details.lesson[open] > summary::after { content: '－'; }
+details.lesson[open] > summary { border-bottom: 1px solid var(--line); }
+.lesson-icon { font-size: 1.15rem; }
+.lesson-title { font-weight: 600; }
+
+.lesson-body { padding: 4px 18px 18px; }
+.lesson-body p { margin-top: 12px; color: #c3cee6; }
+.lesson-body b { color: #fff; }
+.lesson-lead {
+  color: var(--accent) !important;
+  font-size: .9rem;
+  border-left: 2px solid var(--line);
+  padding-left: 10px;
+}
+
+.tug {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: .8rem;
+  flex-wrap: wrap;
+}
+.tug span {
+  flex: 1 1 140px;
+  text-align: center;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+.tug-a { background: rgba(224, 90, 58, .13); color: #f0a893; }
+.tug-b { background: rgba(58, 119, 217, .13); color: #a9c6f5; }
+.tug-vs {
+  flex: 0 0 auto;
+  border: none !important;
+  color: var(--dim);
+  align-self: center;
+  padding: 0 4px !important;
+}
+
+ul.lesson-points {
+  margin: 14px 0 0;
+  padding: 12px 14px 12px 30px;
+  background: var(--panel2);
+  border-radius: 8px;
+  font-size: .82rem;
+  color: var(--dim);
+}
+ul.lesson-points li { margin: 4px 0; }
+
+.lesson-try {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px dashed var(--line);
+}
+.try-btn {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(79, 195, 247, .1);
+  font-size: .85rem;
+}
+.try-btn:hover { background: rgba(79, 195, 247, .2); }
+.lesson-watch {
+  font-size: .8rem;
+  color: var(--dim) !important;
+  margin-top: 10px !important;
+}
+.lesson-watch b { color: var(--text) !important; }
+
+#glossary { margin-top: 16px; }
+#glossary-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.term {
+  background: var(--panel2);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: .8rem;
+}
+.term b { display: block; color: var(--accent); font-weight: 600; margin-bottom: 2px; }
+.term span { color: var(--dim); }
+
 footer { margin-top: 22px; }
 details {
   background: var(--panel);

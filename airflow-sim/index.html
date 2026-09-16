@@ -24,7 +24,8 @@
     </div>
   </div>
 
-  <p class="hint">💡 在畫面上按住拖曳即可繪製障礙物,觀察氣流如何繞過它。試試「圓柱」預設,把黏滯度調低,就能看到卡門渦街!</p>
+  <p class="hint">💡 在畫面上按住拖曳即可繪製障礙物,觀察氣流如何繞過它。試試「圓柱」預設,把黏滯度調低,就能看到卡門渦街!
+  第一次來?直接跳到下面的 <a href="#course">📚 氣流理論小教室</a>,從第 1 課開始邊看邊玩。</p>
 
   <div id="controls">
 
@@ -94,6 +95,20 @@
 
   </div>
 
+  <section id="course">
+    <h2>📚 氣流理論小教室</h2>
+    <p class="course-sub">
+      白話版教材 · <b>全篇沒有任何方程式</b> · 給沒有物理背景的人。
+      每一課都附「🧪 一鍵實驗」,按下去就會把上面的模擬調到剛好能看見該現象的設定。
+    </p>
+    <div id="lessons"></div>
+
+    <details id="glossary">
+      <summary>📖 名詞速查表(開會時用得上)</summary>
+      <div id="glossary-list"></div>
+    </details>
+  </section>
+
   <footer>
     <details>
       <summary>這是怎麼算的?</summary>
@@ -109,5 +124,6 @@
 </div>
 <script src="js/sim.js"></script>
 <script src="js/main.js"></script>
+<script src="js/lessons.js"></script>
 </body>
 </html>

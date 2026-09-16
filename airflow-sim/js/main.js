@@ -275,6 +275,44 @@ $('btn-pause').addEventListener('click', () => {
 $('btn-reset').addEventListener('click', () => { sim.initFluid(); initTracers(); });
 $('btn-clear').addEventListener('click', () => { sim.clearBarriers(); sim.initFluid(); initTracers(); $('preset').value = 'empty'; });
 
+/* ---------- 供「理論小教室」一鍵套用設定 ---------- */
+function applyLessonSetup(cfg) {
+  if (cfg.speed != null) {
+    sim.u0 = cfg.speed;
+    $('speed').value = cfg.speed;
+    $('speed-val').textContent = cfg.speed.toFixed(3);
+  }
+  if (cfg.visc != null) {
+    sim.viscosity = cfg.visc;
+    $('visc').value = cfg.visc;
+    $('visc-val').textContent = cfg.visc.toFixed(3);
+  }
+  if (cfg.contrast != null) {
+    contrast = cfg.contrast;
+    $('contrast').value = cfg.contrast;
+    $('contrast-val').textContent = contrast.toFixed(1);
+  }
+  if (cfg.mode) {
+    displayMode = cfg.mode;
+    $('mode').value = cfg.mode;
+  }
+  if (cfg.tracers != null) {
+    showTracers = cfg.tracers;
+    $('tracers').checked = cfg.tracers;
+  }
+  if (cfg.preset) {
+    $('preset').value = cfg.preset;
+    applyPreset(cfg.preset);
+  } else {
+    sim.initFluid();
+    initTracers();
+  }
+  if (!running) {
+    running = true;
+    $('btn-pause').textContent = '⏸ 暫停';
+  }
+}
+
 window.addEventListener('resize', fitCanvas);
 
 /* ---------- 啟動 ---------- */
